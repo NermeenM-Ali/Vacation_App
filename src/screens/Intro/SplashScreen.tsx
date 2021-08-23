@@ -20,7 +20,7 @@ export default class SplashScreen extends Component<SplashScreenProps> {
                 <View style={styles.imgContainer}>
                     <Image style={styles.img} source={require('../../assets/images/logo.png')} resizeMode='contain' />
                 </View>
-                <Text style={styles.logoTxt}>Start your vacation..</Text>
+                <Text style={styles.logoTxt}>Want to request a vacation ?..</Text>
             </View>
         )
     }
@@ -43,9 +43,11 @@ const styles = StyleSheet.create({
         height: '100%'
     },
     logoTxt: {
-        fontFamily: Fonts.BOLD,
-        fontSize: moderateScale(24),
-        color: colors.WHITE_COLOR,
-        marginTop: verticalScale(15)
+        width: '60%',
+        fontFamily: Fonts.REGULAR,
+        fontSize: moderateScale(20),
+        color: colors.SHADOW_COLOR,
+        marginTop: verticalScale(30),
+        textAlign: 'center'
     }
 })
