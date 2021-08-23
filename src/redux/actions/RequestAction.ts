@@ -38,6 +38,9 @@ export const applySearch = (searchVal: any) => {
             if (!data.length && filteredName) {
                 data = backUpList.filter((item: IRequest) => (item.name.toLowerCase().includes(filteredName) || item.department.toLowerCase().includes(filteredName)))
                 dispatch({ type: types.REQUEST_CHANGE_PROP, prop: 'requestsData', value: data })
+                if (!data.length && filteredName) {
+                    dispatch({ type: types.REQUEST_CHANGE_PROP, prop: 'searchResultText', value: 'Not Found !' })
+                }
             }
         } else {
             dispatch({ type: types.REQUEST_CHANGE_PROP, prop: 'requestsData', value: backUpList })
