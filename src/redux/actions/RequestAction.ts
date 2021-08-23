@@ -29,33 +29,20 @@ export const changeProp = (prop: any, value: any) => {
 
 export const applySearch = (searchVal: any) => {
     return (dispatch: any, getState: any) => {
-        let { requestsData, backUpList } = getState().RequestsReducer
+        let data = [];
         let filteredName = searchVal ? searchVal.toLowerCase() : null
+        let { requestsData, backUpList } = getState().RequestsReducer
         if (filteredName) {
-            let data = requestsData.filter((item: IRequest) => (item.name.toLowerCase().match(filteredName)))
-            dispatch({
-                type: types.REQUEST_CHANGE_PROP,
-                prop: 'requestsData',
-                value: data
-            })
-            if (!data.length) {
-                dispatch({
-                    type: types.REQUEST_CHANGE_PROP,
-                    prop: 'searchResultText',
-                    value: 'Not Found !'
-                })
+            data = requestsData.filter((item: IRequest) => (item.name.toLowerCase().includes(filteredName) || item.department.toLowerCase().includes(filteredName)))
+            dispatch({ type: types.REQUEST_CHANGE_PROP, prop: 'requestsData', value: data })
+            if (!data.length && filteredName) {
+                data = backUpList.filter((item: IRequest) => (item.name.toLowerCase().includes(filteredName) || item.department.toLowerCase().includes(filteredName)))
+                dispatch({ type: types.REQUEST_CHANGE_PROP, prop: 'requestsData', value: data })
             }
         } else {
-            dispatch({
-                type: types.REQUEST_CHANGE_PROP,
-                prop: 'requestsData',
-                value: backUpList
-            })
-            dispatch({
-                type: types.REQUEST_CHANGE_PROP,
-                prop: 'searchResultText',
-                value: null
-            })
+            dispatch({ type: types.REQUEST_CHANGE_PROP, prop: 'requestsData', value: backUpList })
+            dispatch({ type: types.REQUEST_CHANGE_PROP, prop: 'searchResultText', value: null })
         }
+
     }
 }

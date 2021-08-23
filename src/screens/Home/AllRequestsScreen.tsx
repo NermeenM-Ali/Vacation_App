@@ -42,16 +42,15 @@ class AllRequestsScreen extends Component<AllRequestsScreenProps, AllRequestsScr
                     applySearch(val)
                     this.setState({ searchVal: val })
                 }}
-                placeHolder={'Search by name..'}
+                placeHolder={'Search by name or department name..'}
                 keyboardType='default'
                 error={false}
                 touched={false}
-                onSubmitEditing={() => {
-                    Keyboard.dismiss()
-                    applySearch(searchVal)
-                }} />
+                onSubmitEditing={() => { Keyboard.dismiss() }} />
         )
     }
+
+
 
     renderRequestsList() {
         let { requestsData } = this.props
