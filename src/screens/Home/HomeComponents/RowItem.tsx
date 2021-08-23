@@ -15,7 +15,7 @@ export default class RowItem extends PureComponent<RowItemProps>{
             <>
                 {rowTxt ? (<View style={styles.row}>
                     <Octicons name='primitive-dot' style={styles.dotIcon} />
-                    <Text style={styles.rowTxt}>{rowTxt}</Text>
+                    <Text numberOfLines={1} style={styles.rowTxt}>{rowTxt}</Text>
                 </View>) : null}
             </>
         )
