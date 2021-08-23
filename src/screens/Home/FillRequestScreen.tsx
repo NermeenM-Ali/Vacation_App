@@ -58,8 +58,8 @@ class FillRequestScreen extends Component<FillRequestScreenProps, FillRequestScr
             department: Yup.string().required('required'),
             numberOfDays: Yup.string().required('required'),
             mobile: Yup.string()
-                .min(11, 'phone number must be 11 numbers')
-                .max(11, 'phone number must be 11 numbers')
+                .min(11, 'must be 11 numbers or empty')
+                .max(11, 'must be 11 numbers or empty')
                 .optional(),
 
         });
